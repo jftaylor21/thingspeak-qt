@@ -7,13 +7,25 @@
 #include <QString>
 #include <QUrlQuery>
 
-// https://thingspeak.com/docs/channels#update_feed
+/**
+ * Packet for communicating with ThingSpeak.
+ *
+ * See link below for more explanation on data structure:
+ * https://thingspeak.com/docs/channels#update_feed
+ */
 struct THINGSPEAKQTSHARED_EXPORT ThingSpeakPacket
 {
   static const int UNINITIALIZED_NUMBER;
 
   ThingSpeakPacket();
 
+  /**
+   * Get QUrlQuery that can be sent to ThingSpeak channel to write data.
+   *
+   * \param apiKey API Key for writing to ThingSpeak channel.
+   *
+   * \return QUrlQuery that can be sent to ThingSpeak channel.
+   */
   QUrlQuery getQUrlQuery(const QString& apiKey) const;
 
   QString field1;
